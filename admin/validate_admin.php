@@ -13,7 +13,7 @@ $result = mysqli_query($db,$query);
 
 if (mysqli_num_rows($result) == 1) 
 {
-    $_SESSION["username"] = $username;
+    $_SESSION["admin_username"] = $username;
     header("Location: main.php"); 
     exit();
 } 

@@ -13,7 +13,16 @@
 ?>
 
 <div class="container-form">
-    <h4 class="mb-3">Welcome, <?php echo $_SESSION["username"]; ?></h4>
+    <div class="navbar">
+        <div class="back" onclick="window.location.href='../index.html'";>
+            <i class="fas fa-arrow-left"></i>
+            <span>Back</span>
+        </div>
+        <div class="profile" onclick="window.location.href='profile.php'";>
+            <span><?php echo $_SESSION["admin_username"] ?></span>
+            <i class="fas fa-user-circle"></i>
+        </div>
+    </div>
     <div class="card card-body">
         <?php include_once("../title.php") ?>
         <h5>Main</h5><br>
@@ -33,7 +42,7 @@
             <i class="fas fa-door-closed"></i>
             <span>Class</span>
         </button>
-        <br><h5>Others</h5><br>
+        <br><h5>Others (WIP)</h5><br>
         <button type="button" class="btn btn-light btn-sm btn-block btn-admin" onclick="location.href='course/courses.php';">
             <i class="fas fa-circle-notch"></i>
             <span>Course</span>

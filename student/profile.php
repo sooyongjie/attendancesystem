@@ -14,7 +14,7 @@
 
 <div class="container-form">
     <div class="navbar">
-        <div class="back" onclick="window.location.href='../index.html'";>
+        <div class="back" onclick="window.location.href='main.php'";>
             <i class="fas fa-arrow-left"></i>
             <span>Back</span>
         </div>

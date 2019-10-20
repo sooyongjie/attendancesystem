@@ -64,7 +64,16 @@ else
     echo "Error: " . $query . "<br>" . $db->error;
 }
 
-
+/**
+ * Checks Database whether the notification exists for the student
+ *
+ * @param $stud_id Student ID
+ * @param $lect_id Lecturer ID
+ * @param $sub_id Subject ID
+ * @param $class_id Class ID
+ * @param $type Type of Notification
+ *
+ **/
 
 function checkNotificationTable($stud_id, $lect_id, $sub_id, $class_id, $type)
 {
@@ -82,21 +91,17 @@ function checkNotificationTable($stud_id, $lect_id, $sub_id, $class_id, $type)
     {
         sendNotification($stud_id, $lect_id, $sub_id, $class_id, $type);
     }
-
-            
 }
 
 function sendNotification($stud_id, $lect_id, $sub_id, $class_id, $notif_type)
 {
     include("../db_connect.php");
-
     $query = "SELECT sub_name FROM `subject` WHERE sub_id = '$sub_id' ";
     $result = $db->query($query);
     if ($result->num_rows > 0)
     {
         $row = $result->fetch_assoc();
     }
-
     if($notif_type == "1")
     {
         $notif_title = "Warning Letter #1 - ".$row['sub_name'];
@@ -104,12 +109,12 @@ function sendNotification($stud_id, $lect_id, $sub_id, $class_id, $notif_type)
     }
     else if($notif_type == "2")
     {
-        $notif_title = "Warning Letter #2 Issued";
+        $notif_title = "Warning Letter #2 - ".$row['sub_name'];
         $notif_body = "You have been absent to FIVE classes. You will receive a barring letter if you are absent for THREE more classes from the following classes.";
     }
     else if($notif_type == "3")
     {
-        $notif_title = "Barring Letter Issued";
+        $notif_title = "Barring Letter - ".$row['sub_name'];
         $notif_body = "You have been absent to EIGHT classes. You have been barred from going to class for the subject. Please contact your respective HOP.";
     }
     $query = 
@@ -118,7 +123,7 @@ function sendNotification($stud_id, $lect_id, $sub_id, $class_id, $notif_type)
 
     if ($db->query($query) === TRUE)
     {
-        echo "A warning letter has been sent to student<br>";
+        echo " <b>A warning letter has been sent to a student. </b><br>";
     }
     else
     {

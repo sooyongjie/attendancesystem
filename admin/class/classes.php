@@ -22,9 +22,9 @@
             <i class="fas fa-plus"></i>
             <span>Add class</span>
         </button>
-        <button type="button" class="btn btn-light btn-sm btn-block add" onclick="location.href='class_new.php';">
+        <button type="button" class="btn btn-light btn-sm btn-block add" onclick="location.href='';">
             <i class="fas fa-user-plus"></i>
-            <span>Enroll Student</span>
+            <span>Enroll Student (WIP)</span>
         </button>
         <?php
         unset($_SESSION['class_id']);

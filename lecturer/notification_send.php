@@ -3,6 +3,10 @@
  * Counts the number of items in the provided array.
  *
  * @param $stud_id Student ID
+ * @param $lect_id Lecturer ID
+ * @param $sub_id Subject ID
+ * @param $class_id Class ID
+ * @param $type Type of Notification
  *
  **/
 
@@ -27,7 +31,6 @@ function checkNotificationTable($stud_id, $lect_id, $sub_id, $class_id, $type)
         echo " (Do not exists)";
         sendNotification($stud_id, $lect_id, $sub_id, $class_id, $type);
     }
-            
 }
 
 function sendNotification($stud_id, $lect_id, $sub_id, $class_id, $notif_type)
