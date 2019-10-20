@@ -1,1 +1,3 @@
-ur mom gae
+SQL file at root directory.
+
+ur mom gAe
