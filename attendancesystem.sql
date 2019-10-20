@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 18, 2019 at 07:07 PM
+-- Generation Time: Oct 20, 2019 at 01:36 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -25,56 +25,42 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `subject`
+-- Table structure for table `tbl_admin`
 --
 
-CREATE TABLE `subject` (
-  `sub_id` int(3) NOT NULL,
-  `sub_name` varchar(50) NOT NULL,
-  `crs_id` int(2) NOT NULL,
-  `lect_id` int(2) NOT NULL
+CREATE TABLE `tbl_admin` (
+  `admin_id` int(2) NOT NULL,
+  `admin_username` varchar(20) NOT NULL,
+  `admin_password` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `subject`
+-- Dumping data for table `tbl_admin`
 --
 
-INSERT INTO `subject` (`sub_id`, `sub_name`, `crs_id`, `lect_id`) VALUES
-(1, 'Advanced Programming', 1, 1),
-(4, 'Data Management and Security', 2, 1);
+INSERT INTO `tbl_admin` (`admin_id`, `admin_username`, `admin_password`) VALUES
+(1, 'admin', 'admin'),
+(2, 'admin2', 'admin2');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `subject`
+-- Indexes for table `tbl_admin`
 --
-ALTER TABLE `subject`
-  ADD PRIMARY KEY (`sub_id`),
-  ADD KEY `subject_lecturer` (`lect_id`),
-  ADD KEY `subject_course` (`crs_id`);
+ALTER TABLE `tbl_admin`
+  ADD PRIMARY KEY (`admin_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `subject`
+-- AUTO_INCREMENT for table `tbl_admin`
 --
-ALTER TABLE `subject`
-  MODIFY `sub_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `subject`
---
-ALTER TABLE `subject`
-  ADD CONSTRAINT `subject_course` FOREIGN KEY (`crs_id`) REFERENCES `course` (`crs_id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `subject_lecturer` FOREIGN KEY (`lect_id`) REFERENCES `lecturer` (`lect_id`) ON UPDATE CASCADE;
+ALTER TABLE `tbl_admin`
+  MODIFY `admin_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
