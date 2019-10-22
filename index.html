@@ -13,10 +13,8 @@
 <body>
     <div class="container-fluid">
         <div class="default-background background" id="defbg" onmouseover="setBackground(0)"></div>
-        <div class="admin-background background" id="admbg"></div>
-        <div class="lecturer-background background" id="lectbg"></div>
-        <div class="student-background background" id="studbg"></div>
-        <div class="main mx-auto">
+        <div class="clicked-background background" id="blackbg"></div>
+        <div class="main mx-auto" id="buttons">
             <div class="admin mx-auto" id="admbtn" onmouseover="setBackground(1)" onclick="login(1)">
                 <i class="fas fa-user-shield fa-4x menu-icon"></i>
                 <p class="text-center">Admin</p>
@@ -49,27 +47,33 @@
         </div>
         <!-- Lecturer Login -->
         <div class="login" id="lectlgn">
-            <div class="back" onclick="window.location.reload();">
-                <i class="fas fa-long-arrow-alt-left fa-lg"></i>
+            <div class="form-login mx-auto">
+                <div class="back" onclick="window.location.reload();">
+                    <i class="fas fa-long-arrow-alt-left fa-lg"></i>
+                </div>
+                <h2 class="form-header text-center">Lecturer</h2>
+                <form action="lecturer/validate_lecturer.php" method="post" id="lecturer" class="">
+                    <label>Username</label>
+                    <input type="text" name="username" class="form-control" value="lecturer1"><br>
+                    <label>Password</label>
+                    <input type="password" name="password" class="form-control" value="lecturer1"><br>
+                    <button type="submit" form="lecturer" value="Submit" class="btn-login">
+                        <i class="fas fa-sign-in-alt mr-2"></i>
+                        <span>Log In</span>
+                    </button>
+                </form>
             </div>
-            <h2 class="form-header text-center">Lecturer</h2>
-            <form action="lecturer/validate_lecturer.php" method="post" id="lecturer" class="">
-                <label>Username</label>
-                <input type="text" name="username" class="form-control" value="lecturer1"><br>
-                <label>Password</label>
-                <input type="password" name="password" class="form-control" value="lecturer1"><br>
-                <button type="submit" form="lecturer" value="Submit" class="btn-login">
-                    <i class="fas fa-sign-in-alt mr-2"></i>
-                    <span>Log In</span>
-                </button>
-            </form>
+            <div class="info">
+                <h4 class="help-center">Help Center</h1>
+                <p>For self-help resources and to request support for Moodle and other Learning Platform systems, click the IT Support link located at the top left hand side of any Moodle page when logged in. Staff can also access Learning Platform support from the Intranet.</p>
+            </div>
         </div>
         <!-- Student Login -->
         <div class="login" id="studlgn">
             <div class="back" onclick="window.location.reload();">
                 <i class="fas fa-long-arrow-alt-left fa-lg"></i>
             </div>
-            <h2 class="form-header text-center">Student</h2>
+            <h4 class="form-header text-center">Student</h2>
             <form action="student/validate_student.php" method="post" id="student">
                 <label>Username</label>
                 <input type="text" name="username" class="form-control" value="Student1"><br>
@@ -84,129 +88,61 @@
     </div>
 </body>
 <script>
-    const defbg = document.getElementById('defbg')
-    const admbg = document.getElementById('admbg')
-    const lectbg = document.getElementById('lectbg')
-    const studbg = document.getElementById('studbg')
-    var bg, lgn;
+    var option;
+
+    const admlgn = document.getElementById('admlgn');
+    const lectlgn = document.getElementById('lectlgn');
+    const studlgn = document.getElementById('studlgn');
+    const blackbg = document.getElementById('blackbg');
+    const buttons = document.getElementById('buttons');
 
     setTimeout(function(){
-        defbg.style.backgroundColor = 'linear-gradient(to top, #cfd9df 0%, #dadada 100%)';
-    }, 100);
+        blackbg.style.opacity = '0.3';
+    }, 50)
 
-    function setBackground(bg)
+    function login(option)
     {
-        if(bg==1)
+        if(option == 1)
         {
-            admbg.style.opacity = 0.25;
-            admbg.style.transition = '1s';
-            defbg.style.opacity = 0;
-            lectbg.style.opacity = 0;
-            studbg.style.opacity = 0;
-        }
-        else if(bg==2)
-        {
-            lectbg.style.opacity = 0.25;
-            lectbg.style.transition = '1s';
-            defbg.style.opacity = 0;
-            admbg.style.opacity = 0;
-            studbg.style.opacity = 0;
-        }
-        else if(bg==3)
-        {
-            studbg.style.opacity = 0.25;
-            studbg.style.transition = '1s';
-            defbg.style.opacity = 0;
-            admbg.style.opacity = 0;
-            lectbg.style.opacity = 0;
-        }
-        else if(bg==0)
-        {
-            defbg.style.opacity = 1;
-            defbg.style.transition = '1s';
-        }
-    }
-
-    const admbtn = document.getElementById('admbtn')
-    const lectbtn = document.getElementById('lectbtn')
-    const studbtn = document.getElementById('studbtn')
-    const admlgn = document.getElementById('admlgn')
-    const lectlgn = document.getElementById('lectlgn')
-    const studlgn = document.getElementById('studlgn')
-
-    function login(lgn)
-    {
-        hideAllBtnFade();
-        if(lgn==1)                          // Admin
-        {
-            lectbtn.onclick = function() {
-                return false;
-            }
-            studbtn.onclick = function() {
-                return false;
-            }
-            admlgn.style.zIndex = 2;       // login z-index
-            setTimeout(hideAllBtn, 500);
+            setOpacity(blackbg, '0.45')
+            setTransition(blackbg, '1s')
+            setIndex(admlgn, '2')
+            setOpacity(admlgn, '1')
+            setOpacity(buttons, '0')
+            setTransition(buttons, '0.2s')
             setTimeout(function(){
-                // admbg.style.zIndex = 2;
-                // admbg.style.opacity = 1;
-                admlgn.style.opacity = 1;   // login
-            }, 500);
-            admbg.style.zIndex = 2;
-            admbg.style.opacity = 1;
-            
+                setIndex(buttons, '-1')
+            }, 200);
         }
-        else if(lgn==2)
+        else if(option == 2)
         {
-            admbtn.onclick = function() {
-                return false;
-            }
-            studbtn.onclick = function() {
-                return false;
-            }
-            lectlgn.style.zIndex = 2;       // login z-index
-            setTimeout(hideAllBtn, 500);
-            setTimeout(function(){
-                // lectbg.style.zIndex = 2;
-                // lectbg.style.opacity = 1;
-                lectlgn.style.opacity = 1;  // login
-            }, 500);
-            lectbg.style.zIndex = 2;
-            lectbg.style.opacity = 1;
+            setOpacity(blackbg, '0.45')
+            setTransition(blackbg, '1s')
+            setIndex(lectlgn, '2')
+            setOpacity(lectlgn, '1')
+            setIndex(buttons, '-1')
         }
-        else if(lgn==3)
+        else if(option == 3)
         {
-            lectbtn.onclick = function() {
-                return false;
-            }
-            admbtn.onclick = function() {
-                return false;
-            }
-            studlgn.style.zIndex = 2;       // login z-index
-            setTimeout(hideAllBtn, 500);
-            setTimeout(function(){
-                // studbg.style.zIndex = 2;
-                // studbg.style.opacity = 1;
-                studlgn.style.opacity = 1;  // login
-            }, 500);
-            studbg.style.zIndex = 2;
-            studbg.style.opacity = 1;
+            setOpacity(blackbg, '0.45')
+            setTransition(blackbg, '1s')
+            setIndex(studlgn, '2')
+            setOpacity(studlgn, '1')
+            setIndex(buttons, '-1')
         }
     }
-
-    function hideAllBtnFade()
+    function setIndex(elem, val)
     {
-        admbtn.style.opacity = "0";
-        lectbtn.style.opacity = "0";
-        studbtn.style.opacity = "0";
+        elem.style.zIndex = val;
     }
-
-    function hideAllBtn()
+    function setOpacity(elem, val)
     {
-        admbtn.style.display = "none";
-        lectbtn.style.display = "none";
-        studbtn.style.display = "none";
+        elem.style.opacity = val;
     }
-
+    function setTransition(elem, val)
+    {
+        elem.style.transition = val;
+    }
+    
 </script>
 </html>

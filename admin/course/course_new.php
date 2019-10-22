@@ -12,15 +12,14 @@
 ?>
 
 <div class="container-form">
-    <div class="back" onclick="window.location.href='lecturers.php'";>
+    <div class="back" onclick="window.location.href='courses.php'";>
         <i class="fas fa-arrow-left" ></i>
         <span class="welcome-admin">Back</span>
     </div>
     <div class="card card-body">
-        <form action="validate_new_class.php" method="post" id="newclass">
-            <label>Class Venue</label>
-            <input type="text" name="class_venue" class="form-control" placeholder="A-L3-R101"><br>
-            <label>Class Day</label>
+        <form action="validate_new_course.php" method="post" id="newclass">
+            <label>Course Name</label>
+            <input type="text" name="crs_name" class="form-control" placeholder="Name"><br>
             <button type="submit" form="newclass" value="Submit" class="btn btn-secondary">Submit</button>
         </form>
     </div>

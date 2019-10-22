@@ -16,7 +16,7 @@
     </div>
     <div class="card card-body">
     <?php include_once("../../title.php"); ?>
-        <h5 class="card-heading">Lecturers</h5>
+        <h5 class="card-heading">Courses</h5>
         <button type="button" class="btn btn-light btn-sm btn-block add" onclick="location.href='course_new.php';">
         <i class="fas fa-plus"></i>
         <span>Add course</span>
@@ -46,7 +46,7 @@
                                 <input type="submit" name="edit" value="View" class="btn btn-secondary btn-sm"/>
                                 <input type="hidden" name="crs_id" value="<?php echo $row['crs_id']; ?>"/>
                             </form>
-                            <form method="post" action="validate_delete_lecturer.php" id="lecturer" class="record_delete">
+                            <form method="post" action="validate_delete_course.php" id="lecturer" class="record_delete">
                             <input type="submit" name="delete" value="Delete" class="btn btn-danger btn-sm"/>
                                 <input type="hidden" name="crs_id" value="<?php echo $row['crs_id']; ?>"/>
                             </form>
