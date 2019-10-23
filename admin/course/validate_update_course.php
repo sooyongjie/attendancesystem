@@ -28,7 +28,7 @@ $result = mysqli_query($db,$query);
 if ($db->query($query) === TRUE)
 {
     echo "Record updated successfully";
-    header("refresh:1;url=courses.php");
+    header("refresh:0;url=courses.php");
 } 
 else
 {

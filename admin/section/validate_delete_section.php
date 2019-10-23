@@ -2,13 +2,12 @@
 
 include_once('../../db_connect.php');
 
-$class_id = $_POST['class_id'];
+$sect_id = $_POST['sect_id'];
 
-$query = "DELETE FROM class WHERE class_id = '$class_id' ";
+$query = "DELETE FROM section WHERE sect_id = '$sect_id' ";
 
 if ($db->query($query) === TRUE) {
-    echo "Record deleted successfully";
-    header( "refresh:1;url=classes.php" );
+    header( "refresh:0;url=sections.php" );
 } else {
     echo "Error: " . $query . "<br>" . $db->error;
 }

@@ -18,29 +18,26 @@
     </div>
     <div class="card card-body">
         <h5 class="card-heading">Sections</h5>
-        <button type="button" class="btn btn-light btn-sm btn-block" onclick="location.href='class_new.php';">
+        <button type="button" class="btn btn-light btn-sm btn-block add" onclick="location.href='section_new.php';">
             <i class="fas fa-plus"></i>
-            <span>Add class</span>
-        </button>
-        <button type="button" class="btn btn-light btn-sm btn-block add" onclick="location.href='';">
-            <i class="fas fa-user-plus"></i>
-            <span>Enroll Student (WIP)</span>
+            <span>Add section</span>
         </button>
         <?php
-        unset($_SESSION['class_id']);
+        unset($_SESSION['sect_id']);
         include_once('../../db_connect.php');
-        $query = "SELECT * FROM class
-                INNER JOIN `subject` on class.sub_id = `subject`.sub_id 
-                ORDER BY class_day, class_venue";
+        $query = "SELECT * FROM section sect
+                JOIN `session` sess ON sect.sess_id = sess.sess_id 
+                JOIN course crs on sect.crs_id = crs.crs_id 
+                ORDER BY sect_name";
         $result = $db->query($query);
         if ($result->num_rows > 0)
         {
             ?>
             <table class="table">
                 <tr>
-                    <th>Class Venue</th>
-                    <th>Subject</th>
-                    <th>Class Day</th>
+                    <th>Section Name</th>
+                    <th>Session</th>
+                    <th>Course</th>  
                     <th>Action</th>
                 </tr>
             <?php
@@ -48,18 +45,18 @@
             {
                 ?>
                 <tr>
-                    <td> <?php echo $row["class_venue"]; ?> </td>
-                    <td> <?php echo $row["sub_name"]; ?> </td>
-                    <td> <?php echo $row["class_day"]; ?> </td>
+                    <td> <?php echo $row["sect_name"]; ?> </td>
+                    <td> <?php echo $row["sess_name"]; ?> </td>
+                    <td> <?php echo $row["crs_name"]; ?> </td>
                     <td>
                         <div class="record-actions">
-                            <form method="post" action="class_edit.php" id="lecturer" class="record_edit">
+                            <form method="post" action="section_edit.php" id="lecturer" class="record_edit">
                                 <input type="submit" name="edit" value="View" class="btn btn-secondary btn-sm"/>
-                                <input type="hidden" name="class_id" value="<?php echo $row['class_id']; ?>"/>
+                                <input type="hidden" name="sect_id" value="<?php echo $row['sect_id']; ?>"/>
                             </form>
-                            <form method="post" action="validate_delete_class.php" id="lecturer" class="record_delete">
+                            <form method="post" action="validate_delete_section.php" id="lecturer" class="record_delete">
                             <input type="submit" name="delete" value="Delete" class="btn btn-danger btn-sm"/>
-                                <input type="hidden" name="class_id" value="<?php echo $row['class_id']; ?>"/>
+                                <input type="hidden" name="sect_id" value="<?php echo $row['sect_id']; ?>"/>
                             </form>
                         </div>
                     </td>

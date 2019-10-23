@@ -11,44 +11,55 @@
     <title>Attendance</title>
 </head>
 <body>
+        
     <div class="container-fluid">
         <div class="default-background background" id="defbg" onmouseover="setBackground(0)"></div>
         <div class="clicked-background background" id="blackbg"></div>
+        <div class="logo">
+                <img src="img/logo.png" alt="">
+            </div>
         <div class="main mx-auto" id="buttons">
-            <div class="admin mx-auto" id="admbtn" onmouseover="setBackground(1)" onclick="login(1)">
+            
+            <div class="admin mx-auto" id="admbtn" onclick="login(1)">
                 <i class="fas fa-user-shield fa-4x menu-icon"></i>
                 <p class="text-center">Admin</p>
             </div>
-            <div class="lecturer mx-auto" id="lectbtn" onmouseover="setBackground(2)" onclick="login(2)">
+            <div class="lecturer mx-auto" id="lectbtn" onclick="login(2)">
                 <i class="fas fa-chalkboard-teacher fa-4x menu-icon"></i>
                 <p class="text-center">Lecturer</p>
             </div>
-            <div class="student mx-auto" id="studbtn" onmouseover="setBackground(3)" onclick="login(3)">
+            <div class="student mx-auto" id="studbtn" onclick="login(3)">
                 <i class="fas fa-user fa-4x menu-icon"></i>
                 <p class="text-center">Student</p>
             </div>
         </div>
         <!-- Admin Login -->
         <div class="login" id="admlgn">
-            <div class="back" onclick="window.location.reload();">
-                <i class="fas fa-long-arrow-alt-left fa-lg"></i>
+            <div class="form-login mx-auto">
+                <div class="back" onclick="showButtons(1)">
+                    <i class="fas fa-long-arrow-alt-left fa-lg"></i>
+                </div>
+                <h2 class="form-header text-center">Admin</h2>
+                <form action="admin/validate_admin.php" method="post" id="admin" class="">
+                    <label>Username</label>
+                    <input type="text" name="username" class="form-control" value="admin"><br>
+                    <label>Password</label>
+                    <input type="password" name="password" class="form-control" value="admin"><br>
+                    <button type="submit" form="admin" value="Submit" class="btn-login">
+                        <i class="fas fa-sign-in-alt mr-2"></i>
+                        <span>Log In</span>
+                    </button>
+                </form>
             </div>
-            <h2 class="form-header text-center">Admin</h2>
-            <form action="admin/validate_admin.php" method="post" id="admin" class="">
-                <label>Username</label>
-                <input type="text" name="username" class="form-control" value="admin"><br>
-                <label>Password</label>
-                <input type="password" name="password" class="form-control" value="admin"><br>
-                <button type="submit" form="admin" value="Submit" class="btn-login">
-                    <i class="fas fa-sign-in-alt mr-2"></i>
-                    <span>Log In</span>
-                </button>
-            </form>
+            <div class="info">
+                <h4 class="help-center">Help Center</h1>
+                <p>For self-help resources and to request support for Moodle and other Learning Platform systems, click the IT Support link located at the top left hand side of any Moodle page when logged in. Staff can also access Learning Platform support from the Intranet.</p>
+            </div>
         </div>
         <!-- Lecturer Login -->
         <div class="login" id="lectlgn">
             <div class="form-login mx-auto">
-                <div class="back" onclick="window.location.reload();">
+                <div class="back" onclick="showButtons(2);">
                     <i class="fas fa-long-arrow-alt-left fa-lg"></i>
                 </div>
                 <h2 class="form-header text-center">Lecturer</h2>
@@ -70,20 +81,26 @@
         </div>
         <!-- Student Login -->
         <div class="login" id="studlgn">
-            <div class="back" onclick="window.location.reload();">
-                <i class="fas fa-long-arrow-alt-left fa-lg"></i>
+            <div class="form-login mx-auto">
+                <div class="back" onclick="showButtons(3);">
+                    <i class="fas fa-long-arrow-alt-left fa-lg"></i>
+                </div>
+                <h2 class="form-header text-center">Student</h2>
+                <form action="student/validate_student.php" method="post" id="student">
+                    <label>Username</label>
+                    <input type="text" name="username" class="form-control" value="Student1"><br>
+                    <label>Password</label>
+                    <input type="password" name="password" class="form-control" value="Student1"><br>
+                    <button type="submit" form="student" value="Submit" class="btn-login">
+                        <i class="fas fa-sign-in-alt mr-2"></i>
+                        <span>Log In</span>
+                    </button>
+                </form>
             </div>
-            <h4 class="form-header text-center">Student</h2>
-            <form action="student/validate_student.php" method="post" id="student">
-                <label>Username</label>
-                <input type="text" name="username" class="form-control" value="Student1"><br>
-                <label>Password</label>
-                <input type="password" name="password" class="form-control" value="Student1"><br>
-                <button type="submit" form="student" value="Submit" class="btn-login">
-                    <i class="fas fa-sign-in-alt mr-2"></i>
-                    <span>Log In</span>
-                </button>
-            </form>
+            <div class="info">
+                <h4 class="help-center">Help Center</h1>
+                <p>For self-help resources and to request support for Moodle and other Learning Platform systems, click the IT Support link located at the top left hand side of any Moodle page when logged in. Staff can also access Learning Platform support from the Intranet.</p>
+            </div>
         </div>
     </div>
 </body>
@@ -104,31 +121,25 @@
     {
         if(option == 1)
         {
-            setOpacity(blackbg, '0.45')
-            setTransition(blackbg, '1s')
+            setOpacity(blackbg, '0.5')
             setIndex(admlgn, '2')
             setOpacity(admlgn, '1')
-            setOpacity(buttons, '0')
-            setTransition(buttons, '0.2s')
-            setTimeout(function(){
-                setIndex(buttons, '-1')
-            }, 200);
+            hideButtons()
         }
         else if(option == 2)
         {
-            setOpacity(blackbg, '0.45')
-            setTransition(blackbg, '1s')
+            setOpacity(blackbg, '0.5')
             setIndex(lectlgn, '2')
             setOpacity(lectlgn, '1')
-            setIndex(buttons, '-1')
+            hideButtons()
         }
         else if(option == 3)
         {
-            setOpacity(blackbg, '0.45')
-            setTransition(blackbg, '1s')
+            setOpacity(blackbg, '0.5')
             setIndex(studlgn, '2')
             setOpacity(studlgn, '1')
             setIndex(buttons, '-1')
+            hideButtons()
         }
     }
     function setIndex(elem, val)
@@ -142,6 +153,43 @@
     function setTransition(elem, val)
     {
         elem.style.transition = val;
+    }
+    function hideButtons()
+    {
+        setOpacity(buttons, '0');
+        setTimeout(function(){
+            setIndex(buttons, '-1')
+        }, 100);
+    }
+    function showButtons(val)
+    {
+        if(val == 1)
+        {
+            setOpacity(admlgn, '0');
+            setTimeout(function(){
+                setIndex(admlgn, '-1')
+            }, 200);
+        }
+        else if(val == 2)
+        {
+            setOpacity(lectlgn, '0');
+            setTimeout(function(){
+                setIndex(lectlgn, '-1')
+            }, 200);
+        }
+        else if(val == 3)
+        {
+            setOpacity(studlgn, '0');
+            setTimeout(function(){
+                setIndex(studlgn, '-1')
+            }, 200);
+        }
+        setIndex(buttons, '1')
+        setOpacity(blackbg, '0.3')
+        setTimeout(function(){
+            setOpacity(buttons, '1')
+        }, 200);
+        
     }
     
 </script>

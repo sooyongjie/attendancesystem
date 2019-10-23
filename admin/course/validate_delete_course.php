@@ -8,7 +8,7 @@ $query = "DELETE FROM course WHERE crs_id = '$crs_id' ";
 
 if ($db->query($query) === TRUE) {
     echo "Record deleted successfully";
-    header( "refresh:1;url=courses.php" );
+    header( "refresh:0;url=courses.php" );
 } else {
     echo "Error: " . $query . "<br>" . $db->error;
 }
