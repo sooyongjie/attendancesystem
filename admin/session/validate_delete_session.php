@@ -4,7 +4,7 @@ include_once('../../db_connect.php');
 
 $sess_id = $_POST['sess_id'];
 
-$query = "DELETE FROM `session` WHERE class_id = '$sess_id' ";
+$query = "DELETE FROM `session` WHERE sess_id = '$sess_id' ";
 
 if ($db->query($query) === TRUE) {
     echo "Session deleted successfully";

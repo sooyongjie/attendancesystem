@@ -16,7 +16,7 @@
         <div class="default-background background" id="defbg" onmouseover="setBackground(0)"></div>
         <div class="clicked-background background" id="blackbg"></div>
         <div class="logo">
-                <img src="img/logo.png" alt="">
+                <img src="img/logo-new.png" alt="" id="logo">
             </div>
         <div class="main mx-auto" id="buttons">
             
@@ -52,7 +52,8 @@
                 </form>
             </div>
             <div class="info">
-                <h4 class="help-center">Help Center</h1>
+                <h4 class="help-center">Help Center</h4>
+                <img src="img/undraw_personal_settings_kihd.png" alt="" class="img-help-center">
                 <p>For self-help resources and to request support for Moodle and other Learning Platform systems, click the IT Support link located at the top left hand side of any Moodle page when logged in. Staff can also access Learning Platform support from the Intranet.</p>
             </div>
         </div>
@@ -75,7 +76,8 @@
                 </form>
             </div>
             <div class="info">
-                <h4 class="help-center">Help Center</h1>
+                <h4 class="help-center">Help Center</h4>
+                <img src="img/undraw_teacher_35j2.png" alt="" class="img-help-center">
                 <p>For self-help resources and to request support for Moodle and other Learning Platform systems, click the IT Support link located at the top left hand side of any Moodle page when logged in. Staff can also access Learning Platform support from the Intranet.</p>
             </div>
         </div>
@@ -98,7 +100,8 @@
                 </form>
             </div>
             <div class="info">
-                <h4 class="help-center">Help Center</h1>
+                <img src="img/undraw_studying_s3l7.png" alt="" class="img-help-center">
+                <h4 class="help-center">Help Center</h4>
                 <p>For self-help resources and to request support for Moodle and other Learning Platform systems, click the IT Support link located at the top left hand side of any Moodle page when logged in. Staff can also access Learning Platform support from the Intranet.</p>
             </div>
         </div>
@@ -107,6 +110,7 @@
 <script>
     var option;
 
+    const logo = document.getElementById('logo');
     const admlgn = document.getElementById('admlgn');
     const lectlgn = document.getElementById('lectlgn');
     const studlgn = document.getElementById('studlgn');
@@ -119,26 +123,24 @@
 
     function login(option)
     {
+        setOpacity(logo, '0')
+        setOpacity(blackbg, '0.5')
         if(option == 1)
         {
-            setOpacity(blackbg, '0.5')
             setIndex(admlgn, '2')
             setOpacity(admlgn, '1')
             hideButtons()
         }
         else if(option == 2)
         {
-            setOpacity(blackbg, '0.5')
             setIndex(lectlgn, '2')
             setOpacity(lectlgn, '1')
             hideButtons()
         }
         else if(option == 3)
         {
-            setOpacity(blackbg, '0.5')
             setIndex(studlgn, '2')
             setOpacity(studlgn, '1')
-            setIndex(buttons, '-1')
             hideButtons()
         }
     }
@@ -163,6 +165,7 @@
     }
     function showButtons(val)
     {
+        setOpacity(logo, '1')
         if(val == 1)
         {
             setOpacity(admlgn, '0');

@@ -3,6 +3,7 @@
 <head>
 <?php include_once('../../header.php') ?>
     <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/admin.css">
     <title>Admin Page</title>
 </head>
 <body>
@@ -12,11 +13,18 @@
 ?>
 
 <div class="container-form">
-    <div class="back" onclick="window.location.href='../main.php'";>
-        <i class="fas fa-arrow-left" ></i>
-        <span class="welcome-admin">Back</span>
+    <div class="navbar">
+        <div class="back" onclick="window.location.href='../main.php'";>
+            <i class="fas fa-arrow-left"></i>
+            <span>Back</span>
+        </div>
+        <div class="profile" onclick="window.location.href='profile.php'";>
+            <span><?php echo $_SESSION["admin_username"] ?></span>
+            <i class="fas fa-user-circle"></i>
+        </div>
     </div>
     <div class="card card-body">
+    <?php include_once("../../title.php"); ?>
         <h5 class="card-heading">Classes</h5>
         <button type="button" class="btn btn-light btn-sm btn-block" onclick="location.href='class_new.php';">
             <i class="fas fa-plus"></i>

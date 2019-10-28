@@ -7,6 +7,7 @@ body { background-color: #333 }
 
 .background
 {
+    z-index: -1;
     position:fixed;
     padding:0;
     margin:0;
@@ -25,7 +26,14 @@ body { background-color: #333 }
 
 .logo
 {
-    z-index: 2; 
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 15%;
+    left: 50%;
+}
+.logo img {
+    height: 12vh;
+    transition: 0.2s ease-out;
 }
 
 .main
@@ -73,7 +81,7 @@ body { background-color: #333 }
     cursor: pointer;
 }
 
-.form-header, .help-center
+.form-header
 {
     margin: 42px 0px 36px 0px;
 }
@@ -143,6 +151,21 @@ body { background-color: #333 }
 {
     padding: 0px 24px 0px 24px;
     border-left: 1px solid #eee;
+}
+
+/*  */
+
+.help-center {
+    margin: 48px 0px 32px 0px;
+}
+
+.img-help-center {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    width: 424px;
+    opacity: 0.2;
+    z-index: -1;
 }
 
 /* Animation */

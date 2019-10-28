@@ -3,6 +3,7 @@
 <head>
 <?php include_once('../../header.php') ?>
     <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/admin.css">
     <title>Admin Page</title>
 </head>
 <body>
@@ -12,9 +13,15 @@
 ?>
 
 <div class="container-form">
-    <div class="back" onclick="window.location.href='../main.php'";>
-        <i class="fas fa-arrow-left" ></i>
-        <span class="welcome-admin">Back</span>
+    <div class="navbar">
+        <div class="back" onclick="window.location.href='../main.php'";>
+            <i class="fas fa-arrow-left"></i>
+            <span>Back</span>
+        </div>
+        <div class="profile" onclick="window.location.href='../main.php'";>
+            <span><?php echo $_SESSION["admin_username"] ?></span>
+            <i class="fas fa-user-circle"></i>
+        </div>
     </div>
     <div class="card card-body">
         <h5 class="card-heading">Sessions</h5>
@@ -52,7 +59,7 @@
                             </form>
                             <form method="post" action="validate_delete_session.php" id="lecturer" class="record_delete">
                             <input type="submit" name="delete" value="Delete" class="btn btn-danger btn-sm"/>
-                                <input type="hidden" name="class_id" value="<?php echo $row['sess_id']; ?>"/>
+                                <input type="hidden" name="sess_id" value="<?php echo $row['sess_id']; ?>"/>
                             </form>
                         </div>
                     </td>
