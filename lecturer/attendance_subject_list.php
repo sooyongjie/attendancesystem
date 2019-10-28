@@ -58,7 +58,7 @@
                 }
                 else
                 {
-                    echo "FUCK!";
+                    echo "There are no class for this subject.<br><br>";
                 }
             }
         } 

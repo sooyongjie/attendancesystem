@@ -35,9 +35,9 @@ tr { margin-top: 12px !important; }
 
 .container-form
 {
-    margin-left: 28%;
+    margin-left: 20%;
     margin-top: 48px;
-    margin-right: 28%;
+    margin-right: 20%;
     margin-bottom: 102px;
     /* position: fixed;
     top: 50%;
@@ -47,7 +47,7 @@ tr { margin-top: 12px !important; }
 
 .card
 {
-    min-height: 550px;
+    min-height: 650px;
     min-width: 100%;
     width: 100%;
     max-width: 600px;

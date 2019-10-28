@@ -107,7 +107,7 @@
         }
         else
         {
-            echo "No subject enrolled. Please contact admin for subject enrollment.";
+            echo "<br>No subject enrolled. Please contact admin for subject enrollment.";
             // echo "Error: " . $query . "<br>" . $db->error;
         }
         ?>
