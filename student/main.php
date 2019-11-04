@@ -31,27 +31,33 @@
         <h5 class=""><i class="far fa-clipboard heading-icon"></i>Attendance Report</h5>
         <?php
         $query = 
-        "SELECT * FROM class_enrollment ce
-        JOIN `subject` sub ON ce.sub_id = sub.sub_id  
-        WHERE ce.stud_id = '".$_SESSION['stud_id']."'";
+        "SELECT DISTINCT(att.sub_id), sub.sub_name FROM attendance att
+        JOIN `subject` sub ON att.sub_id = sub.sub_id  
+        WHERE att.stud_id = '".$_SESSION['stud_id']."'";
         $result = $db->query($query);
         if ($result->num_rows > 0)
         {
             while($row = $result->fetch_assoc())
             {
+                // displays each subject
                 ?>
-                <hr class="thick">
+                <br>
                 <h5 class="card-heading"> <?php echo $row['sub_name'] ?> </h5>
                 <?php
                 $query2 = 
-                "SELECT * FROM attendance att 
+                "SELECT * FROM attendance 
                 WHERE stud_id = '".$_SESSION['stud_id']."'
                 AND sub_id = '".$row['sub_id']."' ";
                 $result2 = $db->query($query2);
                 if ($result2->num_rows > 0)
                 {
                     ?>
-                    <table class='table text-center'><tr><td></td><td>Status</td><td>Date</td></tr>
+                    <table class='table text-center'>
+                        <tr>
+                            <td></td>
+                            <td>Status</td>
+                            <td>Date</td>
+                        </tr>
                     <?php
                     $i = 0; $present = 0; 
                     while($row2 = $result2->fetch_assoc())
@@ -93,8 +99,6 @@
                     }
                     ?>
                     <h6 class="card-sub-heading"><?php echo "Summary: ".$present."/".$i." classes attended" ?></h6>
-
-                    
                     </table>
                     <?php
                 }
