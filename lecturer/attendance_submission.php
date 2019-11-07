@@ -54,14 +54,13 @@
                     echo "Error: " . $query2 . "<br>" . $db->error;
                     exit();
                 }
-
             }
             echo "Attendance submitted.";
             $lect_id = $_SESSION['lect_id'];
             $sub_id = $_SESSION['sub_id'];
             $class_id = $_SESSION['class_id'];
             include_once('attendance_alert.php');
-            header( "refresh:1;url=main.php" );
+            header( "refresh:1;url=classes-from-subject.php" );
         }
         ?>
     </div>
