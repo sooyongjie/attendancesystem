@@ -24,7 +24,7 @@
         </div>
     </div>
     <div class="card card-body">
-    <?php include_once("../title.php"); ?>
+    <?php include_once("../title_sub.php"); ?>
         <h5 class="card-heading">Lecturers</h5>
         <button type="button" class="btn btn-light btn-sm btn-block add" onclick="location.href='lecturer_new.php';">
         <i class="fas fa-plus"></i>

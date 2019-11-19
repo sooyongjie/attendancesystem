@@ -18,7 +18,7 @@
             <i class="fas fa-arrow-left"></i>
             <span>Back</span>
         </div>
-        <div class="profile" onclick="window.location.href='../index.html'";>
+        <div class="profile" onclick="window.location.href='#";>
             <span><?php echo $_SESSION['admin_username'] ?></span>
             <i class="fas fa-user-circle"></i>
         </div>

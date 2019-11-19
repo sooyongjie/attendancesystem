@@ -40,7 +40,7 @@
             <i class="fas fa-door-closed"></i>
             <span>Class</span>
         </button>
-        <br><h5>Others (WIP)</h5><br>
+        <br><h5>Others</h5><br>
         <button type="button" class="btn btn-light btn-sm btn-block btn-admin" onclick="location.href='course/courses.php';">
             <i class="fas fa-circle-notch"></i>
             <span>Course</span>

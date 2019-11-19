@@ -14,7 +14,7 @@ $result = mysqli_query($db,$query);
 
 if ($db->query($query) === TRUE) {
     echo "Record updated successfully";
-    header( "refresh:1;url=classes.php" );
+    header( "refresh:1;url=sessions.php" );
 } else {
     echo "Error updating record: " . $db->error;
 }
