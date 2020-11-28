@@ -1,3 +1,3 @@
 SQL file at root directory.
 
-ur mom gAe
+Edit: exported database is missing many tables
